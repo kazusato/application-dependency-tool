@@ -1,0 +1,63 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:dev:kazusato:tools:appdep:ApplicationDependencyConfig",
+  "properties" : {
+    "datatype" : {
+      "type" : "string",
+      "enum" : [ "application-config" ]
+    },
+    "version" : {
+      "type" : "string",
+      "enum" : [ "v1" ]
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "type" : {
+      "type" : "string",
+      "enum" : [ "frontend", "backend", "library", "database", "queue", "extsys" ]
+    },
+    "dependencies" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:dev:kazusato:tools:appdep:DependencyInfo",
+      "properties" : {
+        "frontend" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "backend" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "library" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "database" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "queue" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "extsys" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}

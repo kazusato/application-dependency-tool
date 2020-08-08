@@ -1,0 +1,24 @@
+datatype: application-config
+name: project1-ui
+type: frontend
+version: v1
+dependencies:
+  backend:
+    - project1-api
+    - project2-api
+  extsys:
+    - extsys1
+---
+---
+datatype: application-config
+name: project1-api
+type: backend
+version: v1
+dependencies:
+  backend:
+    - project3-api
+  database:
+    - project1-db
+  extsys:
+    - extsys2
+---

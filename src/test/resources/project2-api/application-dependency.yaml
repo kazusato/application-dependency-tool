@@ -1,0 +1,9 @@
+datatype: application-config
+name: project2-api
+type: backend
+version: v1
+dependencies:
+  database:
+    - project2db
+  extsys:
+    - extsys1

@@ -1,0 +1,7 @@
+datatype: application-config
+name: project99-ui
+type: frontend
+version: v1
+dependencies:
+  backend:
+    - project99-api

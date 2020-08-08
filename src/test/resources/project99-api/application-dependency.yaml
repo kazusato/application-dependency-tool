@@ -1,0 +1,9 @@
+datatype: application-config
+name: project99-api
+type: backend
+version: v1
+dependencies:
+  database:
+    - project99db
+  extsys:
+    - extsys99
