@@ -1,0 +1,12 @@
+@startuml
+
+rectangle project1-ui
+rectangle project1-api
+rectangle project1db
+rectangle extsys1
+
+project1-ui -d-> project1-api
+project1-api -d-> project1db
+project1-api -r-> extsys1
+
+@enduml
