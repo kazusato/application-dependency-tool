@@ -50,7 +50,6 @@ class NodeRepository {
             NodeType.DATABASE -> node.databaseDependencies
             NodeType.QUEUE -> node.queueDependencies
             NodeType.EXTSYS -> node.extsysDependencies
-            else -> throw IllegalArgumentException("No such type: ${type}")
         }
     }
 
