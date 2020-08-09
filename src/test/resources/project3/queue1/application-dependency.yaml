@@ -1,0 +1,7 @@
+datatype: application-config
+name: queue1
+type: queue
+version: v1
+dependencies:
+  backend:
+    - project3-api2

@@ -1,0 +1,10 @@
+datatype: application-config
+name: project3-ui2
+type: frontend
+version: v1
+dependencies:
+  backend:
+    - project3-api1
+    - project3-api2
+  extsys:
+    - extsys3

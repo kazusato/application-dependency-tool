@@ -1,0 +1,7 @@
+datatype: application-config
+name: project3-ui1
+type: frontend
+version: v1
+dependencies:
+  backend:
+    - project3-api1

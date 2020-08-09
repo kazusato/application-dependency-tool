@@ -1,0 +1,13 @@
+datatype: application-config
+name: project3-api1
+type: backend
+version: v1
+dependencies:
+  backend:
+    - project3-api2
+  database:
+    - project3db
+  queue:
+    - queue1
+  extsys:
+    - extsys1

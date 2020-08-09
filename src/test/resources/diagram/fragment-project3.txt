@@ -1,0 +1,42 @@
+@startuml
+
+skinparam defaultFontSize 24
+skinparam rectangle {
+backgroundColor<<frontend>> DeepSkyBlue
+backgroundColor<<backend>> MediumSeaGreen
+backgroundColor<<library>> LemonChiffon
+backgroundColor<<queue>> Violet
+backgroundColor<<extsys>> SandyBrown
+}
+
+skinparam database {
+backgroundColor<<database>> LightPink
+}
+
+
+rectangle "project3-ui1" <<frontend>> as project3_ui1
+rectangle "project3-ui2" <<frontend>> as project3_ui2
+rectangle "project3-api2" <<backend>> as project3_api2
+rectangle "project3-api1" <<backend>> as project3_api1
+rectangle "project3-lib1" <<library>> as project3_lib1
+database "project3db" <<database>> as project3db
+rectangle "queue1" <<queue>> as queue1
+rectangle "extsys2" <<extsys>> as extsys2
+rectangle "extsys1" <<extsys>> as extsys1
+rectangle "extsys3" <<extsys>> as extsys3
+
+project3_ui1 -d-> project3_api1
+project3_ui2 -d-> project3_api1
+project3_ui2 -d-> project3_api2
+project3_ui2 -d-> extsys3
+project3_api2 -r-> project3_lib1
+project3_api2 -d-> project3db
+project3_api2 -r-> extsys1
+project3_api1 -r-> project3_api2
+project3_api1 -d-> project3db
+project3_api1 -u-> queue1
+project3_api1 -r-> extsys1
+project3_lib1 -r-> extsys2
+queue1 -d-> project3_api2
+
+@enduml

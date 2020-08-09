@@ -35,6 +35,7 @@ class DiagramFragmentTest {
         val diagramFragment = DiagramFragment(graph)
         val diagramFragmentStr = diagramFragment.toString()
 
+        println(diagramFragmentStr)
         assertThat(diagramFragmentStr).isEqualTo(readFromResource("diagram/fragment-project1.txt"))
     }
 
@@ -81,7 +82,69 @@ class DiagramFragmentTest {
         val diagramFragmentStr = diagramFragment.toString()
 
         println(diagramFragmentStr)
-//        assertThat(diagramFragmentStr).isEqualTo(readFromResource("diagram/fragment-project1.txt"))
+        assertThat(diagramFragmentStr).isEqualTo(readFromResource("diagram/fragment-project1and2.txt"))
+    }
+
+    @Test
+    fun testToStringMoreComplex() {
+        val repo = NodeRepository()
+
+        val configUi1 = ApplicationDependencyConfig.load(
+            this.javaClass.classLoader.getResourceAsStream(
+                "project3/ui1/application-dependency.yaml"
+            )
+        )[0]
+        repo.registerNodeFromApplicationDependencyConfig(configUi1)
+        val configApi1 = ApplicationDependencyConfig.load(
+            this.javaClass.classLoader.getResourceAsStream(
+                "project3/api1/application-dependency.yaml"
+            )
+        )[0]
+        repo.registerNodeFromApplicationDependencyConfig(configApi1)
+
+        val configUi2 = ApplicationDependencyConfig.load(
+            this.javaClass.classLoader.getResourceAsStream(
+                "project3/ui2/application-dependency.yaml"
+            )
+        )[0]
+        repo.registerNodeFromApplicationDependencyConfig(configUi2)
+        val configApi2 = ApplicationDependencyConfig.load(
+            this.javaClass.classLoader.getResourceAsStream(
+                "project3/api2/application-dependency.yaml"
+            )
+        )[0]
+        repo.registerNodeFromApplicationDependencyConfig(configApi2)
+
+        val configLib1 = ApplicationDependencyConfig.load(
+            this.javaClass.classLoader.getResourceAsStream(
+                "project3/lib1/application-dependency.yaml"
+            )
+        )[0]
+        repo.registerNodeFromApplicationDependencyConfig(configLib1)
+        val configQueue1 = ApplicationDependencyConfig.load(
+            this.javaClass.classLoader.getResourceAsStream(
+                "project3/queue1/application-dependency.yaml"
+            )
+        )[0]
+        repo.registerNodeFromApplicationDependencyConfig(configQueue1)
+
+        val graphRepo = DependencyGraphRepository()
+
+        val uiNode1 = repo.findNode(configUi1)!!
+        graphRepo.registerNode(uiNode1)
+
+        val uiNode2 = repo.findNode(configUi2)!!
+        graphRepo.registerNode(uiNode2)
+
+        val queueNode1 = repo.findNode(configQueue1)!!
+        graphRepo.registerNode(queueNode1)
+
+        val graph = graphRepo.graphList[0]
+        val diagramFragment = DiagramFragment(graph)
+        val diagramFragmentStr = diagramFragment.toString()
+
+        println(diagramFragmentStr)
+        assertThat(diagramFragmentStr).isEqualTo(readFromResource("diagram/fragment-project3.txt"))
     }
 
     private fun readFromResource(filePath: String): String {

@@ -1,19 +1,33 @@
 @startuml
 
-rectangle project1-ui
-rectangle project2-ui
-rectangle project1-api
-rectangle project2-api
-rectangle project1db
-rectangle project2db
-rectangle extsys1
+skinparam defaultFontSize 24
+skinparam rectangle {
+backgroundColor<<frontend>> DeepSkyBlue
+backgroundColor<<backend>> MediumSeaGreen
+backgroundColor<<library>> LemonChiffon
+backgroundColor<<queue>> Violet
+backgroundColor<<extsys>> SandyBrown
+}
 
-project1-ui -d-> project1-api
-project2-ui -d-> project1-api
-project2-ui -d-> project2-api
-project1-api -d-> project1db
-project1-api -r-> extsys1
-project2-api -d-> project2db
-project2-api -r-> extsys1
+skinparam database {
+backgroundColor<<database>> LightPink
+}
+
+
+rectangle "project1-ui" <<frontend>> as project1_ui
+rectangle "project2-ui" <<frontend>> as project2_ui
+rectangle "project1-api" <<backend>> as project1_api
+rectangle "project2-api" <<backend>> as project2_api
+database "project1db" <<database>> as project1db
+database "project2db" <<database>> as project2db
+rectangle "extsys1" <<extsys>> as extsys1
+
+project1_ui -d-> project1_api
+project2_ui -d-> project1_api
+project2_ui -d-> project2_api
+project1_api -d-> project1db
+project1_api -r-> extsys1
+project2_api -d-> project2db
+project2_api -r-> extsys1
 
 @enduml

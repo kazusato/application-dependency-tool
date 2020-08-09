@@ -1,0 +1,11 @@
+datatype: application-config
+name: project3-api2
+type: backend
+version: v1
+dependencies:
+  library:
+    - project3-lib1
+  database:
+    - project3db
+  extsys:
+    - extsys1
